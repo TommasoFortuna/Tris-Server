@@ -2,7 +2,6 @@ package com.meucci;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
 
 
 
@@ -11,19 +10,32 @@ public class Main {
 
     }
 
-    public static char chiHaVinto(char[] array){
-        if(areEqual(array, 0,1,2)){
-            return array[0];
-        }
+    private static char chiHaVinto(char[] array){
+        char r = '0';
 
-        return ' ';
+        //orizzontali
+        areEqual(array, r, 0,1,2);
+        areEqual(array, r, 3,4,5);
+        areEqual(array, r, 6,7,8);
+
+        //verticali
+        areEqual(array, r, 0,3,6);
+        areEqual(array, r, 1,4,7);
+        areEqual(array, r, 2,5,8);
+
+        //diagonali
+        areEqual(array, r, 0,4,8);
+        areEqual(array, r, 2,4,6);
+
+        return r;
     }
 
-    public static char areEqual(char[] array, int a, int b, int c){
+    private static void areEqual(char[] array, char $r,  int a, int b, int c){
         if(array[a] == array[b] && array[b] == array[c]){
-            return array[a];
+            if (array[a] == '0'){
+                $r = array[a];
+            }
         }
-        return 'x';
     }
 
 }
