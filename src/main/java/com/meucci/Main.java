@@ -9,6 +9,13 @@ public class Main {
 
 
     }
+    private static boolean aggiungi(char[] array, char valore, int pos){
+        if(array[pos] == '0'){
+            array[pos] = valore;
+            return true;
+        }
+        return false;
+    }
 
     private static char chiHaVinto(char[] array){
         /*
