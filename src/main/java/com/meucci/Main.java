@@ -11,6 +11,12 @@ public class Main {
     }
 
     private static char chiHaVinto(char[] array){
+        /*
+         * '0' Nessuno ha vinto
+         * '1' G1 ha vinto
+         * '2' G2 ha vinto
+         * 'P' Gioco finito in pareggio
+         */
         char r = '0';
 
         //orizzontali
@@ -27,12 +33,20 @@ public class Main {
         areEqual(array, r, 0,4,8);
         areEqual(array, r, 2,4,6);
 
+        if(r == '0'){
+            for (char c : array) {
+                if(c == '0'){
+                    return r;
+                }
+            }
+            return 'P';
+        }
         return r;
     }
 
     private static void areEqual(char[] array, char $r,  int a, int b, int c){
         if(array[a] == array[b] && array[b] == array[c]){
-            if (array[a] == '0'){
+            if (array[a] != '0'){
                 $r = array[a];
             }
         }
