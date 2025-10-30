@@ -9,7 +9,8 @@ import java.net.Socket;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        System.out.println("Hello world!");
+        char[] tris = {'0', '0', '0', '0', '0', '0', '0', '0', '0'};
+        boolean turnoPrimoGiocatore = true;
 
         ServerSocket mioServerSocket = new ServerSocket(3000);
         Socket G1 = mioServerSocket.accept();
@@ -25,7 +26,40 @@ public class Main {
         G1_out.println("READY");
         G2_out.println("READY");
 
-        String mossaScelta = G1_in.readLine();
+
+        while (chiHaVinto(tris) == '0') {
+            if (turnoPrimoGiocatore) {
+                char mossaScelta = G1_in.readLine().charAt(0);
+                if(aggiungi(tris, '1', mossaScelta)){
+                    //TODO OK
+                } else {
+                    //TODO KO
+                }
+
+                //TODO 
+
+            }else{
+                //TODO same as p1
+
+            }
+            turnoPrimoGiocatore = !turnoPrimoGiocatore;
+        }
+        switch (chiHaVinto(tris)) {
+            case '1':
+            //G1 ha vinto
+                //TODO
+                break;
+            case '2':
+            //G2 ha vinto
+                //TODO
+                break;
+            case 'P':
+            //Pareggio
+                //TODO
+                break;
+            default:
+                break;
+        }       
 
         mioServerSocket.close();
     }
